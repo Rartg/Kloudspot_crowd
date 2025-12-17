@@ -20,7 +20,7 @@ export class CrowdEntries {
   crowdData = signal<any[]>([]);
 
   currentPage = 1;
-  rowsPerPage = 10;
+  rowsPerPage = 9;
 
   /* ===========================
      Injected services (renamed)

@@ -113,8 +113,9 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
 }
 
-.chart-box.small {
+.chart-bax.small {
   width: 360px;
+  
 }
 
 .chart-container,
@@ -152,4 +153,12 @@
 
 .sym {
   width: 18px;
+}
+.new-cart{
+   margin-top: 28px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  width: 70%;
 }

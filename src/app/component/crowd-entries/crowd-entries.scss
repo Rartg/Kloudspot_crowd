@@ -1,84 +1,65 @@
 .page-layout {
   display: flex;
   min-height: 100vh;
-  background: #f6f7f9;
+  background: #f3f5f8;
 }
-
 
 .content-wrapper {
   flex: 1;
-  padding: 24px 32px;
+  padding: 28px 36px;
 }
 
-
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-
-  h1 {
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0;
-  }
-
-  .location {
-    margin-top: 4px;
-    font-size: 14px;
-    color: #666;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
+/* Header */
+.header-bar {
+  margin-bottom: 18px;
 }
-
-.date-btn {
-  background: #fff;
-  border: 1px solid #ddd;
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
 
 .page-title {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin: 0;
+  color: #111827;
 }
 
-
+/* Table Card */
 .table-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  padding: 0;
   overflow: hidden;
 }
 
+/* Table */
 .crowd-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: Inter, sans-serif;
+  font-family: 'Inter', sans-serif;
 
   thead {
-    background: #E8E8E8;
+    background: linear-gradient(to right, #f0f4f8, #e6ebf1);
   }
 
   th {
     text-align: left;
-    padding: 14px 20px;
-    font-size: 14px;
+    padding: 16px 22px;
+    font-size: 13px;
     font-weight: 600;
-    color: #333;
+    color: #374151;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
   }
 
   td {
-    padding: 16px 20px;
+    padding: 16px 22px;
     font-size: 14px;
-    color: #666;
-    border-bottom: 1px solid #eaeaea;
+    color: #4b5563;
+    border-bottom: 1px solid #eef1f4;
+    vertical-align: middle;
+  }
+
+  tbody tr:hover {
+    background: #f9fafb;
   }
 
   tr:last-child td {
@@ -91,13 +72,50 @@
   display: flex;
   align-items: center;
   gap: 12px;
+  font-weight: 500;
+}
 
-  img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
+.avatar-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2f8f8b, #4fb7b3);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Gender Tag */
+.gender-tag {
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.gender-tag.male {
+  background: rgba(47, 143, 139, 0.15);
+  color: #2f8f8b;
+}
+
+.gender-tag.female {
+  background: rgba(232, 121, 249, 0.15);
+  color: #c026d3;
+}
+
+/* Dwell Time */
+.dwell-pill {
+  background: #eefdfc;
+  color: #065f5b;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 /* Pagination */
@@ -106,19 +124,33 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  margin-top: 20px;
+  padding: 20px;
+  background: #ffffff;
+  border-top: 1px solid #eef1f4;
+}
 
-  button {
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    padding: 6px 10px;
-    cursor: pointer;
-    border-radius: 6px;
-  }
+.page-btn,
+.nav-btn {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+}
 
-  .active {
-    background: #00a8a8;
-    color: #fff;
-  }
+.page-btn:hover,
+.nav-btn:hover {
+  background: #f1f5f9;
+}
+
+.page-btn.active {
+  background: #2f8f8b;
+  color: #ffffff;
+}
+
+.nav-btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
 }

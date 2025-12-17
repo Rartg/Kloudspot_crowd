@@ -1,51 +1,48 @@
 @if (visible) {
   <div class="overlay">
     <div class="panel">
+
+      <!-- Header -->
       <div class="header">
         <h3>Notifications</h3>
-        <button (click)="close.emit()">✕</button>
+        <button class="close-btn" (click)="close.emit()">✕</button>
       </div>
 
+      <!-- Content -->
       <div class="content">
         @for (alert of soc.alerts(); track $index) {
-        <div class="alert-card">
-        <div class="alert-content">
-         <div class="alert-time">
-          {{alert.ts | date:'MMMM d yyyy':'UTC'}} <span>{{alert.ts | date:'hh mm a'}}</span>
-        </div>
+          <div class="alert-card">
 
-    <div class="alert-title">
-      {{alert.personName}} 
-    </div>
+            <div class="alert-left">
+              <div class="alert-time">
+                {{ alert.ts | date:'MMMM d yyyy':'UTC' }}
+                <span>{{ alert.ts | date:'hh mm a' }}</span>
+              </div>
 
-    <div class="alert-location">
-      <span class="icon"></span>
-      {{alert.direction}}
-    </div>
-  </div>
-@if(alert.severity == 'high'){ 
-  <div class="alert-badge high">
-    {{alert.severity}}
-  </div>}
-@else if(alert.severity == 'medium'){
-  <div class="alert-badge medium">
-    {{alert.severity}}
-  </div>}
-  @else {
-    <div class="alert-badge low">
-    {{alert.severity}}
-  </div>
+              <div class="alert-title">
+                {{ alert.personName }}
+              </div>
 
-  }
+              <div class="alert-location">
+                <span class="icon">📍</span>
+                {{ alert.direction }}
+              </div>
+            </div>
 
+            @if(alert.severity == 'high'){
+              <div class="alert-badge high">{{ alert.severity }}</div>
+            }
+            @else if(alert.severity == 'medium'){
+              <div class="alert-badge medium">{{ alert.severity }}</div>
+            }
+            @else {
+              <div class="alert-badge low">{{ alert.severity }}</div>
+            }
 
-
-
-
-</div>}
-        <!-- <p>No new alerts</p> -->
+          </div>
+        }
       </div>
+
     </div>
   </div>
 }
-

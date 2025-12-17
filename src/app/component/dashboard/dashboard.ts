@@ -379,30 +379,127 @@ public demographChart!: Chart;
 public pieChart!: Chart;
 
 
-  public demographConfig: ChartConfiguration<'line'> = {
+public demographConfig: ChartConfiguration<'line'> = {
   type: 'line',
   options: {
     responsive: true,
-    maintainAspectRatio: false
+    maintainAspectRatio: false,
+
+    animation: {
+      duration: 900,
+      easing: 'easeOutQuart'
+    },
+
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+
+    plugins: {
+      legend: {
+        display: true,
+        position: 'top',
+        labels: {
+          color: '#374151',
+          font: {
+            size: 12,
+            // weight: '500'
+          }
+        }
+      },
+      tooltip: {
+        backgroundColor: '#111827',
+        titleColor: '#ffffff',
+        bodyColor: '#e5e7eb',
+        padding: 10,
+        cornerRadius: 6
+      }
+    },
+
+    scales: {
+      x: {
+        grid: {
+          display: false
+        },
+        ticks: {
+          color: '#6b7280',
+          font: {
+            size: 11
+          }
+        }
+      },
+      y: {
+        grid: {
+          color: '#e5e7eb',
+          // drawBorder: false
+        },
+        ticks: {
+          color: '#6b7280',
+          font: {
+            size: 11
+          }
+        }
+      }
+    },
+
+    spanGaps: false
   },
+
   data: {
     labels: [],
     datasets: [
       {
         label: 'Men',
         data: [],
-        borderColor: '#2A7F7D99',
-        tension: 0.4
+
+        borderColor: '#2F8F8B',
+        backgroundColor: 'rgba(47, 143, 139, 0.25)',
+        fill: true,
+
+        tension: 0.45,
+
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointBackgroundColor: '#2F8F8B',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2,
+
+        borderCapStyle: 'round',
+        borderJoinStyle: 'round',
+
+        segment: {
+          borderDash: ctx =>
+            ctx.p0.skip || ctx.p1.skip ? [6, 6] : undefined
+        }
       },
       {
         label: 'Women',
         data: [],
-        borderColor: '#47B2B080',
-        tension: 0.4
+
+        borderColor: '#E879F9',
+        backgroundColor: 'rgba(232, 121, 249, 0.25)',
+        fill: true,
+
+        tension: 0.45,
+
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointBackgroundColor: '#E879F9',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2,
+
+        borderCapStyle: 'round',
+        borderJoinStyle: 'round',
+
+        segment: {
+          borderDash: ctx =>
+            ctx.p0.skip || ctx.p1.skip ? [6, 6] : undefined
+        }
       }
     ]
   }
 };
+
 
 
 pieConfig: ChartConfiguration<'doughnut'> = {
@@ -412,16 +509,55 @@ pieConfig: ChartConfiguration<'doughnut'> = {
     datasets: [
       {
         data: [],
+
+        /* 🎨 Colors (UNCHANGED) */
         backgroundColor: ['#2F8F8B', '#4FB7B3'],
+
+        /* ✨ Visual polish */
         borderWidth: 0,
-        spacing: 3
+        spacing: 4,
+        hoverOffset: 10,
+        borderRadius: 8
       }
     ]
   },
   options: {
-    responsive: true
+    responsive: true,
+    cutout: '70%',
+
+    animation: {
+      animateRotate: true,
+      animateScale: true,
+      duration: 900,
+      easing: 'easeOutQuart'
+    },
+
+    plugins: {
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          usePointStyle: true,
+          pointStyle: 'circle',
+          color: '#374151',
+          font: {
+            size: 12,
+            // weight: '500'
+          },
+          padding: 16
+        }
+      },
+      tooltip: {
+        backgroundColor: '#111827',
+        titleColor: '#ffffff',
+        bodyColor: '#e5e7eb',
+        padding: 10,
+        cornerRadius: 6
+      }
+    }
   }
 };
+
 
 
 

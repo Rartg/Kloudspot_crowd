@@ -1,52 +1,81 @@
 <div class="page-layout">
-  
+
   <app-sidebar></app-sidebar>
 
-  
   <div class="content-wrapper">
-   
-    <h2 class="page-title">Overview</h2>
 
-    
+    <div class="header-bar">
+      <h2 class="page-title">Crowd Entries Overview</h2>
+    </div>
+
     <div class="table-card">
+
       <table class="crowd-table">
         <thead>
           <tr>
             <th>Name</th>
             <th>Sex</th>
-            <th>Entry</th>
-            <th>Exit</th>
+            <th>Entry Time</th>
+            <th>Exit Time</th>
             <th>Dwell Time</th>
           </tr>
         </thead>
 
-       <tbody>
-  @for (row of paginatedData; track $index) {
-    <tr>
-      <td>{{ row.personName }}</td>
-      <td>{{ row.gender }}</td>
-      <td>{{ row.entryLocal }}</td>
-      <td>{{ row.exitLocal }}</td>
-      <td>{{ row.dwellMinutes }}</td>
-    </tr>
-  }
-</tbody>
+        <tbody>
+          @for (row of paginatedData; track $index) {
+            <tr>
+              <td class="name-cell">
+                <span class="avatar-badge">
+                  {{ row.personName?.charAt(0) }}
+                </span>
+                {{ row.personName }}
+              </td>
+              <td>
+                <span
+                  class="gender-tag"
+                  [class.male]="row.gender === 'Male'"
+                  [class.female]="row.gender === 'Female'">
+                  {{ row.gender }}
+                </span>
+              </td>
+              <td>{{ row.entryLocal }}</td>
+              <td>{{ row.exitLocal }}</td>
+              <td>
+                <span class="dwell-pill">
+                  {{ row.dwellMinutes }} min
+                </span>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
 
-<div class="pagination">
-  <button (click)="prevPage()" [disabled]="currentPage === 1">&lt;</button>
+      <!-- Pagination -->
+      <div class="pagination">
+        <button
+          class="nav-btn"
+          (click)="prevPage()"
+          [disabled]="currentPage === 1">
+          ‹
+        </button>
 
-  @for (page of pages; track page) {
-    <button
-      (click)="goToPage(page)"
-      [class.active]="currentPage === page">
-      {{ page }}
-    </button>
-  }
+        @for (page of pages; track page) {
+          <button
+            class="page-btn"
+            (click)="goToPage(page)"
+            [class.active]="currentPage === page">
+            {{ page }}
+          </button>
+        }
 
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages">&gt;</button>
-</div>
-</table>
-</div>
+        <button
+          class="nav-btn"
+          (click)="nextPage()"
+          [disabled]="currentPage === totalPages">
+          ›
+        </button>
+      </div>
 
+    </div>
   </div>
 </div>
