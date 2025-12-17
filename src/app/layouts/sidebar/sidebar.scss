@@ -1,0 +1,58 @@
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #0f3c3c, #062a2a);
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+
+.nav {
+  flex: 1;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  color: #cfdede;
+  cursor: pointer;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-item.active {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+  text-decoration: none;
+}
+
+.logout {
+  margin-top: auto;
+  opacity: 0.8;
+  cursor: pointer;
+}
+.ico{
+  width: 18px;
+  
+}
+.d-logo{
+  width: 25px;
+      padding-right: 5px;
+}

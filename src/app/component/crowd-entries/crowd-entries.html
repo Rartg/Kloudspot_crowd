@@ -1,0 +1,52 @@
+<div class="page-layout">
+  
+  <app-sidebar></app-sidebar>
+
+  
+  <div class="content-wrapper">
+   
+    <h2 class="page-title">Overview</h2>
+
+    
+    <div class="table-card">
+      <table class="crowd-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Entry</th>
+            <th>Exit</th>
+            <th>Dwell Time</th>
+          </tr>
+        </thead>
+
+       <tbody>
+  @for (row of paginatedData; track $index) {
+    <tr>
+      <td>{{ row.personName }}</td>
+      <td>{{ row.gender }}</td>
+      <td>{{ row.entryLocal }}</td>
+      <td>{{ row.exitLocal }}</td>
+      <td>{{ row.dwellMinutes }}</td>
+    </tr>
+  }
+</tbody>
+
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">&lt;</button>
+
+  @for (page of pages; track page) {
+    <button
+      (click)="goToPage(page)"
+      [class.active]="currentPage === page">
+      {{ page }}
+    </button>
+  }
+
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">&gt;</button>
+</div>
+</table>
+</div>
+
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="login-container">
+  <div class="overlay"></div>
+
+  <div class="content">
+
+  
+    <div class="hero-text">
+      <h1>Welcome to the<br />Crowd Management System</h1>
+    </div>
+
+    
+    <div class="login-card">
+
+      
+      <img class="login-header"  src="background/ksbackground.png" alt="logo" class="logo" >
+        <!-- <img src="logo/logo.png" alt="logo" class="logo" /> -->
+        <!-- <img class = 'tri' src="background/background_triangle.png" alt="logo" class="logo" /> -->
+        
+      <!-- </div> -->
+
+      
+      <div class="form-area">
+
+        <div class="input-group">
+          <label>Log In</label>
+          <input type="text" placeholder="Enter Login Id" [(ngModel)] = "email" />
+        </div>
+
+        <div class="input-group">
+          <label>Password</label>
+          <div class="password-field">
+            <input class="inp" [type]="spass ? 'text' : 'password'" placeholder="Enter Password" [(ngModel)] = "password" />
+            <img (click)="showpass()" src="icons/eye.png" class="eye-icon" alt="this is eye img"/>
+          </div>
+        </div>
+        
+        <p class="ermsg">{{errorMessage()}}</p>
+
+        <button class="btn-login" (click)= "login()">Login</button>
+        
+      </div>
+      
+
+    </div>
+  </div>
+</div>

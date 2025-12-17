@@ -1,0 +1,153 @@
+<div class="layout">
+
+  <app-sidebar></app-sidebar>
+
+  <div class="main">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+      <div class="left">
+        <h2 class="brand">Crowd Solutions</h2>
+
+        <div class="site-wrapper">
+          <select
+            class="location"
+            [(ngModel)]="sharedVars.siteId"
+            (change)="onSitechange()"
+          >
+            <option value="">Select Site</option>
+            @for (site of sites(); track $index) {
+              <option value="{{site.siteId}}">
+                {{ site.name }}
+              </option>
+            }
+          </select>
+
+          @if(sharedVars.siteId == ''){
+            <span class="erw">*please select the site</span>
+          }
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="bell" (click)="toggleNotifications()">
+          <img class="bimg" src="icons/bell.png" alt="bell">
+        </div>
+
+        <app-notification-panel
+          [visible]="showNotifications"
+          (close)="showNotifications = false">
+        </app-notification-panel>
+
+        <div class="avatar"></div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <section class="content">
+
+      <!-- Header -->
+      <div class="content-header">
+        <h3>Overview</h3>
+
+        <div class="date-wrapper">
+          <input
+            class="daySelect"
+            type="date"
+            (change)="clickfortest($event.target.value)"
+            [disabled]="!sharedVars.siteId"
+          />
+
+          @if(!sharedVars.fromUtc){
+            <span class="erw">* Select date</span>
+          }
+        </div>
+      </div>
+
+      <!-- KPI Cards -->
+      <div class="cards">
+
+        <div class="card">
+          <p class="card-title">Live Occupancy</p>
+          <h2>
+            @if(socketApi.liveOccupancy()?.siteOccupancy != null){
+              {{ socketApi.liveOccupancy()?.siteOccupancy }}
+            }
+          </h2>
+        </div>
+
+        <div class="card">
+          <p class="card-title">Today’s Footfall</p>
+          <h2>{{ footfallCount() }}</h2>
+
+          @if(percentChangeinFootfall() >= 0){
+            <span class="positive">
+              ▲ {{ percentChangeinFootfall() | number:'1.1-1' }}% More than yesterday
+            </span>
+          }
+          @else {
+            <span class="negative">
+              ▼ {{ Math.abs(percentChangeinFootfall()) | number:'1.1-1' }}% Less than yesterday
+            </span>
+          }
+        </div>
+
+        <div class="card">
+          <p class="card-title">Avg Dwell Time</p>
+          <h2>{{ averageDwellTime() }}</h2>
+
+          @if(percentChangeinDwell() >= 0){
+            <span class="positive">
+              ▲ {{ percentChangeinDwell() | number:'1.1-1' }}% More than yesterday
+            </span>
+          }
+          @else {
+            <span class="negative">
+              ▼ {{ Math.abs(percentChangeinDwell()) | number:'1.1-1' }}% Less than yesterday
+            </span>
+          }
+        </div>
+
+      </div>
+
+      <!-- Occupancy Chart -->
+      <div class="chart-box">
+        <div class="chart-header">
+          <h4>Overall Occupancy</h4>
+        </div>
+        <div class="chart-container">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Demographics -->
+      <h3 class="section-title">Demographics</h3>
+
+      <div class="demographics">
+
+        <div class="chart-box small">
+          <h4>Gender Split</h4>
+          <div class="donut-placeholder">
+            <canvas id="pieChart"></canvas>
+          </div>
+
+          <div class="gender-info">
+            <p><img class="sym" src="icons/man.png"> {{ menPercentage() | number }}%</p>
+            <p><img class="sym" src="icons/women.png"> {{ womenPercentage() | number }}%</p>
+          </div>
+        </div>
+
+        <div class="chart-box">
+          <div class="chart-header">
+            <h4>Demographics Analysis</h4>
+          </div>
+          <div class="chart-demographics">
+            <canvas id="demographChart"></canvas>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+  </div>
+</div>

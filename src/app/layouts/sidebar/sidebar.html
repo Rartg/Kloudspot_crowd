@@ -1,0 +1,22 @@
+
+<aside class="sidebar">
+    <div class="logo">
+      <span class="logo-icon"><img class = "d-logo " src="logo/d-logo.png" alt=""> </span>
+      <span class="logo-text">  kloudspot</span>
+    </div>
+
+    <nav class="nav">
+      <a routerLink="/dashboard" class="nav-item">
+        <span   class="icon"><img class="ico" src="icons/home.png" alt=""></span>
+        Overview
+      </a>
+      <a routerLink="/crowd" class="nav-item">
+        <span  class="icon"><img src="icons/crowd-e.png" alt="" class="ico"></span>
+        Crowd Entries
+      </a>
+    </nav>
+
+    <div class="logout" (click)="logout()">
+      ⏻ Logout
+    </div>
+  </aside>
